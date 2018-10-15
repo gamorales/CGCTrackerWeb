@@ -1,0 +1,30 @@
+INFO 2018-10-07 16:42:40,825 - Cliente: 192.168.1.10:60794
+INFO 2018-10-07 16:42:47,100 - LOAD
+INFO 2018-10-07 16:42:47,100 - received "['##,imei:864895030184277,A\r\n']"
+INFO 2018-10-07 16:42:47,100 - Entraron 0 registros
+INFO 2018-10-07 16:42:50,602 - **,imei:864895030184277
+,B;
+INFO 2018-10-07 16:42:50,603 - received "['864895030184277\r\n']"
+INFO 2018-10-07 16:42:50,603 - Entraron 0 registros
+INFO 2018-10-07 16:42:59,585 - ON
+DEBUG 2018-10-07 16:42:59,591 - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+DEBUG 2018-10-07 16:42:59,600 - Making request: POST https://oauth2.googleapis.com/token
+DEBUG 2018-10-07 16:42:59,664 - Starting new HTTPS connection (1): oauth2.googleapis.com
+DEBUG 2018-10-07 16:42:59,996 - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+DEBUG 2018-10-07 16:43:00,003 - Starting new HTTPS connection (1): gpstraker-5fe83.firebaseio.com
+DEBUG 2018-10-07 16:43:00,706 - https://gpstraker-5fe83.firebaseio.com:443 "GET /Vehiculos.json HTTP/1.1" 200 1931
+DEBUG 2018-10-07 16:43:00,912 - https://gpstraker-5fe83.firebaseio.com:443 "PUT /Coordenadas/hFF4aKwDORPd07nsCcdVHb35F0n1/123456789012345/180916145840.json?print=silent HTTP/1.1" 204 0
+INFO 2018-10-07 16:43:00,914 - imei:123456789012345,tracker,180916145840,,F,192834.00,A,0322.49470,N,07651.03370,W,0.000,0
+
+INFO 2018-10-07 16:43:00,914 - Entraron 1 registros
+INFO 2018-10-07 16:43:00,914 - received "['imei:123456789012345,tracker,180916145840,,F,192834.00,A,0322.49470,N,07651.03370,W,0.000,0\r\n']"
+INFO 2018-10-07 16:43:00,914 - Entraron 1 registros
+INFO 2018-10-07 16:44:14,981 - ON
+DEBUG 2018-10-07 16:44:15,158 - https://gpstraker-5fe83.firebaseio.com:443 "GET /Vehiculos.json HTTP/1.1" 200 1931
+DEBUG 2018-10-07 16:44:15,384 - https://gpstraker-5fe83.firebaseio.com:443 "PUT /Coordenadas/hFF4aKwDORPd07nsCcdVHb35F0n1/123456789012345/180916145140.json?print=silent HTTP/1.1" 204 0
+INFO 2018-10-07 16:44:15,385 - imei:123456789012345,tracker,180916145140,,F,192834.00,A,0322.49470,N,07651.03370,W,0.000,0
+
+INFO 2018-10-07 16:44:15,385 - Entraron 1 registros
+INFO 2018-10-07 16:44:15,385 - received "['imei:123456789012345,tracker,180916145140,,F,192834.00,A,0322.49470,N,07651.03370,W,0.000,0\r\n']"
+INFO 2018-10-07 16:44:15,385 - Entraron 1 registros
+INFO 2018-10-07 17:07:49,551 - Cliente: 192.168.1.10:47722
