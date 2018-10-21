@@ -1,0 +1,14 @@
+[Unit]
+Description=uWSGI instance to serve GPSTracker
+After=network.target
+
+[Service]
+User=user_linux
+Group=nginx
+WorkingDirectory=/path/to/project
+Environment="PATH=/path/to/project/projectenv/bin"
+ExecStart=/path/to/project/projectenv/bin/uwsgi --ini gpstracker.ini
+
+[Install]
+WantedBy=multi-user.target
+
