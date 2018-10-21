@@ -1,19 +1,26 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import socket
 import logging
 import sys
 import threading
 import decoder
-from _thread import *
 import sys
+import os
+
+from _thread import *
+from datetime import datetime
 from commands import commands
 
 HOST = "0.0.0.0"
 PORT = 8889
 
 # Configurar el logger
+path_script = os.path.dirname(os.path.realpath(__file__))
 current_date = datetime.now()
 LOG_FORMAT = "%(levelname)s %(asctime)s - %(message)s"
-logfile = "logs/file"+(str(current_date)[0:10].replace('-', ''))+".log"
+logfile = path_script+"/logs/file"+(str(current_date)[0:10].replace('-', ''))+".log"
 logging.basicConfig(filename=logfile, level=logging.DEBUG, format=LOG_FORMAT)
 logger = logging.getLogger()
   
@@ -45,7 +52,7 @@ def clientes(conn):
             logger.info('ON')
 
             # Se buscará si hay comandos para enviarle al GPS
-            archivo = "comandos/"+datos[0][5:20]
+            archivo = path_script+"/comandos/"+datos[0][5:20]
             try:
                 import os
                 if os.path.exists(archivo):

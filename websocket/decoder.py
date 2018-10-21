@@ -32,15 +32,15 @@ def decode(gps_data):
             'speed',                # 1.83
             'course',               # 119.35
             'altitude',             # ''
-            'unknown_1',            # 0
-            'unknown_2',            # 0
+            'unknown_1',            # 0 -- Old versions 1 is ACC ON, 0 is ACC OFF
+            'unknown_2',            # 0 -- Old versions 1 is DOOR ON, 0 is DOOR OFF
             'gasoline',             # 0.0% GAS
-            'unknown_4',            # ''
+            'unknown_4',            # '' -- the remaining oil percentage in the fuel tank
             'end_delimiter',        # ''
     """
 
     re_location_full = '^imei:(?P<imei>\d{15}),' + \
-        'tracker,' + \
+        '(?P<type_data>.*),' + \
         '(?P<local_date>\d*),' + \
         '(?P<local_time>\d*),' + \
         'F,' + \
@@ -50,10 +50,10 @@ def decode(gps_data):
         '(?P<latitude_hemisphere>[NS]),' + \
         '(?P<longitude>\d+\.\d+),' + \
         '(?P<longitude_hemisphere>[EW]),' + \
-        ''
-    """
         '(?P<speed>\d+\.\d+)?,' + \
-        '(?P<course>\d+\.\d+)?,' + \
+        '(?P<course>\d+\.\d+)?'
+
+    """
         '(?P<altitude>\d+\.\d+)?,' + \
         '.*;'
     """
@@ -80,8 +80,11 @@ def decode(gps_data):
     elif re.match(re_location_full, gps_data):
         match = re.match(re_location_full, gps_data)
         imei = match.group('imei')
-
+        type_data = match.group('type_data')
+        speed = match.group('speed')
+        course = match.group('course')
         local_date = match.group('local_date')
+
         latitude = match.group('latitude')
         latitude_hemisphere = match.group('latitude_hemisphere')
         longitude = match.group('longitude')
@@ -117,7 +120,7 @@ def decode(gps_data):
     # Ninggún campo debe ir vacio
     if imei!="" and latitude!="" and longitude!="" and local_date!="":
         # Se extraerá el ID del usuario para guardarlo en la Referencia Coordenadas
-        return connect.consultarVehiculo(imei, latitude, longitude, local_date)
+        return connect.consultarVehiculo(imei, latitude, longitude, local_date, type_data, speed, course)
     else:
         return None
 
