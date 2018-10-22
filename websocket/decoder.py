@@ -19,7 +19,8 @@ def decode(gps_data):
     # e.g. imei:865328021048409,tracker,141210110820,,F,030823.000,A,3745.9502,S,14458.2049,E,1.83,119.35,,0,0,0.0%,,;
     """
             'imei_unparsed',        # imei:865328021048409
-            'source',               # tracker
+            'source',               # tracker, help me, low battery, move, speed, stockade, ac alerm, door alarm, sensor alarm, acc alarm, accident alarm, 
+                                    # bonnet alarm, footbrake alarm, oik ##.## (oil percentage), acc on/off, area01 in/out
             'local_date',           # 141210110820
             'local_time',           # ''
             'type',                 # F - full / L - low

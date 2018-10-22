@@ -59,11 +59,19 @@ def clientes(conn):
                     f = open(archivo,"r")
                     content = f.readlines()
                     for linea in content:
-                        comando = linea.rstrip().split(',')
-                        # En caso de haber segundo parametro
-                        if len(comando)==2:
+                        comando = linea.rstrip().split(',') # 0->command, 1->speed/time/distance/latitud01, 2->longitud01, 3->latitud02, 4-> longitud02
+                        comando_enviar = commands[comando[0]].replace("#imei#", comando[1])
+                        # El primer caso es para geofence
+                        if len(comando)==5:
+                            comando_enviar = commands[comando[0]].replace("#latitud01#", comando[1])
+                            comando_enviar = commands[comando[0]].replace("#longitud01#", comando[2])
+                            comando_enviar = commands[comando[0]].replace("#latitud02#", comando[3])
+                            comando_enviar = commands[comando[0]].replace("#longitud02#", comando[4])
+                        # Segundo caso es para velocidad, tiempo o distancia
+                        elif len(comando)==2:
                             comando_enviar = commands[comando[0]].replace("#time#", comando[1])
                             comando_enviar = commands[comando[0]].replace("#speed#", comando[1])
+                            comando_enviar = commands[comando[0]].replace("#distance#", comando[1])
                         else:
                             comando_enviar = commands[comando[0]]
 
